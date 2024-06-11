@@ -1,0 +1,44 @@
+"""Gettings and settings widget data """
+
+import tkinter as tk
+from tkinter import ttk
+
+def button_func():
+    #get content of entry
+    entry_text = entry.get()
+
+    # label.config(text = 'some other text')               .config and .configure are the same, use configure > config
+    label['text'] = entry_text # this should be the preferred method. Taking the widget, pass in named argument then assign new value to it. 
+    entry['state'] = 'disabled'
+
+def change_text():
+    #get content of entry
+    entry_text = entry.get()
+
+    label['text'] = 'some text'
+    entry['state'] = 'enabled'
+
+
+#window
+window = tk.Tk()
+window.title("Getting and Setting Widgets")
+
+#widgets
+label = ttk.Label(master = window, text = 'label')
+label.pack()
+
+entry = ttk.Entry(master = window )
+entry.pack()
+
+button = ttk.Button(master = window, text = 'button', command = button_func)
+button.pack()
+#exercise
+#add another button that changes text back to 'some text' and enables entry.
+def reset():
+    label['text'] = 'some text'
+    entry['state'] = 'enabled'
+exercise_button = ttk.Button(master = window, text = 'exercise', command = reset)
+exercise_button.pack()
+
+#run
+window.mainloop()
