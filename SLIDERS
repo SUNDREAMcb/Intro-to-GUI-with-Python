@@ -1,0 +1,51 @@
+import tkinter as tk 
+from tkinter import ttk
+from tkinter import scrolledtext
+
+window = tk.Tk()
+window.geometry('500x200')
+window.title('Sliders')
+
+#slider
+scale_int = tk.DoubleVar(value = 15)
+slider = ttk.Scale(
+    master = window , 
+    command = lambda value: progress_bar.stop() ,
+    from_= 0, 
+    to = 25,
+    length = 300,
+    orient = 'horizontal',
+    variable = scale_int)
+slider.pack()
+
+#progress bar 
+progress_bar = ttk.Progressbar(
+    window, 
+    variable = scale_int, 
+    maximum= 25,
+    orient = 'vertical',
+    mode = 'indeterminate',
+    length = 300) #small bar
+progress_bar.pack()
+
+# progress_bar.start(1000)
+
+#scrolled text
+scrolled_text = scrolledtext.ScrolledText(window)
+scrolled_text.pack()
+
+
+#exercise
+exercise_int = tk.IntVar()
+vertical_progress_bar = ttk.Progressbar(window, orient = 'vertical', variable = exercise_int)
+vertical_progress_bar.pack()
+vertical_progress_bar.start()
+
+label = ttk.Label(window, textvariable = exercise_int)
+label.pack()
+
+exercise_slider = ttk.Scale(window, variable = exercise_int, from_ = 0 , to = 100)
+exercise_slider.pack()
+
+
+window.mainloop()
