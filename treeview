@@ -1,0 +1,49 @@
+import tkinter as tk 
+from tkinter import ttk
+import random as r 
+from random import choice
+
+window = tk.Tk()
+window.geometry('500x200')
+window.title('Treeview')
+
+first_names = ['Cristian','Leah',"Jay", "Jordan","Dianne","Jack","GT","Mack","Alexandra","Ellis"]
+last_names = ['Barraza','Starnes',"Jones"]
+
+table = ttk.Treeview(window,columns = ('first','last','email'), show = 'headings')
+table.heading('first', text = 'first name')
+table.heading('last', text = 'surname')
+table.heading('email', text = 'email')
+table.pack(fill = 'both', expand = 'true')
+
+table.insert(parent ='', index = 0, values = ('John','Doe','johndoe@email.com'))
+
+for i in range(100):
+    john = choice(first_names)
+    doe = choice(last_names)
+    email = f'{john}{doe}@email.com'
+    data = (john,doe,email)
+    table.insert(parent = '', index = 0, values = data)
+
+table.insert(parent = '', index = tk.END , values = ("XXXXX","YYYYY","ZZZZZ"))
+
+#events
+def item_select(_):
+    print(table.selection())
+    for i in table.selection():
+        print(table.item(i)['values'])
+
+def delete_items(_):
+    print('delete')
+    for i in table.selection():
+        table.delete(i)
+
+table.bind('<<TreeviewSelect>>', item_select)
+table.bind('<Delete>', delete_items)
+
+#items
+
+
+
+
+window.mainloop()
