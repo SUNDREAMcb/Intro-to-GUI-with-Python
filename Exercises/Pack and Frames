@@ -1,0 +1,67 @@
+import tkinter as tk 
+from tkinter import ttk
+
+window = tk.Tk()
+window.geometry('600x400')
+window.title('Pack & Frames') #4:46 of 18:21 , coming back after a 7 day vacation
+
+# side = 'left', right top and bottom, the side the widget is added to
+
+# expand = 'true', false , determines the vertical or horizontal space a widget _can_ occupy 
+
+# fill = 'x',y,both, none (none is default), sets how much space the widget _will_ occupy 
+
+#top widget
+
+top_frame = ttk.Frame(window)
+label1 = ttk.Label(top_frame, text = 'label 1', background = 'red')
+label2 = ttk.Label(top_frame, text = 'label 2    ', background = 'blue')
+
+#middle widget
+label3 = ttk.Label(window, text = 'label 3 ', background = 'green')
+
+#bottom frame
+bottom_frame = ttk.Frame(window)
+label4 = ttk.Label(bottom_frame, text = 'label 4 ', background = 'orange')
+button1 = ttk.Button(bottom_frame, text = 'button 1 ')
+button2 = ttk.Button(bottom_frame, text = 'button 2 ')
+
+#exercise widget 
+ex_frame = ttk.Frame(bottom_frame)
+button3 = ttk.Button(ex_frame, text = 'button 3 ')
+button4 = ttk.Button(ex_frame, text = 'button 4 ')
+button5 = ttk.Button(ex_frame, text = 'button 5 ')
+
+
+#top lay out 
+label1.pack(side = 'left', fill  = 'both', expand = True)
+label2.pack(side = 'left', fill  = 'both', expand = True)
+top_frame.pack(fill = 'both', expand = True )
+
+#middle layout 
+
+label3.pack(expand = True)
+
+#bottom layout
+button1.pack(side = 'left',expand = True , fill = 'both')
+label4.pack(side = 'left',expand = True , fill = 'both')
+button2.pack(side = 'left',expand = True , fill = 'both')
+bottom_frame.pack( expand = True , fill = 'both', padx = 20, pady = 20)
+
+#EXERCISE
+
+button3.pack(expand = True, fill = 'both')
+button4.pack(expand = True, fill = 'both')
+button5.pack(expand = True, fill = 'both')
+
+ex_frame.pack(side = 'left', fill = 'both', expand = True)
+
+
+
+#3 more buttons, another frame, frame should be on right side inside bottom frame and buttons should be stacked vertically. 
+
+
+
+
+
+window.mainloop()
